@@ -1,0 +1,63 @@
+#include <SPI.h>
+#include <WiFi.h>
+char ssid[]= "DELL";
+char password[]= "54166713";
+
+int status=WL_IDLE_STATUS;
+char b[100];
+int k;
+
+uint16_t port =9999;     // port number of the server
+IPAddress server(192,168,1,122);   // IP Address of the server
+WiFiClient client;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(PUSH1, INPUT_PULLUP); //configure sw1 as input
+ 
+  WiFi.begin(ssid, password);
+  
+  while(WiFi.status()!=WL_CONNECTED)
+  {
+    Serial.println("Waiting for Wi-Fi Connection");
+     Serial.print(".");
+    delay(300);
+  }
+  
+  Serial.println("WiFi Connected");
+  Serial.println("Attempting to connect to Server");
+  
+  while(!client.connect(server,port))
+  {
+  Serial.print(".");
+  delay(300);
+  }
+  Serial.println("Connected to Server");
+ 
+}
+
+void loop()
+{
+      
+  if(Serial.available())
+  { 
+     memset(b, 0, 100);
+     Serial.readBytes(b,100);
+     Serial.print("Transmitted:");
+     Serial.println(b);
+     client.println(b);
+    delay(500);
+  }
+      if(client.available())   //Checks for any incoming data from server
+      {
+          char c=client.read();
+          Serial.print(c);
+      }
+      if(!digitalRead(PUSH1))   //when sw1 is pressed, a message is sent to server
+      {
+          delay(200);
+          client.println("HELLO SERVER");
+      }
+  
+}

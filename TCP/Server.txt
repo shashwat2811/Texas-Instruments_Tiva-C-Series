@@ -1,0 +1,78 @@
+
+#include <SPI.h>
+#include <WiFi.h>
+
+IPAddress ip(192, 168, 1, 122); 
+char b[100];
+int k; 
+
+char ssid[] = "M48";
+char password[] ="48484848";
+
+WiFiServer server(9999);
+
+void setup() {
+  
+  Serial.begin(9600);
+  
+  pinMode(PUSH1, INPUT_PULLUP); 
+  Serial.print("Attempting to connect to Network named: ");
+  Serial.println(ssid); 
+  WiFi.config(ip);
+  WiFi.begin(ssid, password);
+  while ( WiFi.status() != WL_CONNECTED) 
+  {
+    Serial.print(".");
+    delay(300);
+  }
+
+  Serial.println("\nYou're connected to the network");
+  Serial.println("Waiting for an ip address");
+
+  while (WiFi.localIP() == INADDR_NONE) {
+    Serial.print(".");
+    delay(300);
+  }
+
+  Serial.println("\nIP Address obtained");
+
+  IPAddress IP = WiFi.localIP();
+  Serial.print("IP Address: ");
+  Serial.println(IP);
+  server.begin();  // start the server:
+}
+
+
+void loop() 
+{
+  // wait for a new client:
+  WiFiClient client = server.available();
+
+ 
+  if(Serial.available())
+  { 
+     memset(b, 0, 100);
+     Serial.readBytes(b,100);
+     Serial.print("Transmitted:");
+     Serial.println(b);
+     server.println(b);
+    delay(500);
+  }
+
+
+      if(client==true)
+      {
+          if(!digitalRead(PUSH1))
+          {
+            delay(200);
+            server.println("HELLO Client");
+          }
+          if(client.available())  //Checks for any incoming data from client
+          {
+            char c=client.read();
+            Serial.print(c);
+          }
+       }
+}
+
+
