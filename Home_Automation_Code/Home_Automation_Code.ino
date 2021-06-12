@@ -25,9 +25,9 @@
 #include <WiFi.h>
 
 // your network name also called SSID
-char ssid[] = "AndroidAP9CA8";
+char ssid[] = "XYZ";
 // your network password
-char password[] = "123456789";
+char password[] = "123";
 
 
 WiFiServer server(80);
@@ -92,7 +92,7 @@ void loop() {
             client.println();
 
             // the content of the HTTP response follows the header:
-            client.println("<html><head><title>SINHA'S HOME AUTOMATIONr</title></head><body align=center>");
+            client.println("<html><head><title>TIVA HOME AUTOMATIONr</title></head><body align=center>");
             client.println("<h1 align=center><font color=\"blue\">Welcome to the Home Automation Services</font></h1>");
             
             client.println("<h2 align=left><font color=\"red\">HALL</font></h2>");
