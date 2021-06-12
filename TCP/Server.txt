@@ -2,12 +2,12 @@
 #include <SPI.h>
 #include <WiFi.h>
 
-IPAddress ip(192, 168, 1, 122); 
+IPAddress ip(xxx,xxx,x,xxx); 
 char b[100];
 int k; 
 
-char ssid[] = "M48";
-char password[] ="48484848";
+char ssid[] = "XYZ"; // Server's device name
+char password[] ="123";  // Server's password
 
 WiFiServer server(9999);
 
