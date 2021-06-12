@@ -29,9 +29,9 @@
 #include <WiFi.h>
 
 // your network name also called SSID
-char ssid[] = "Galaxy M30sF825";
+char ssid[] = "XYZ"; // Your device name = XYZ
 // your network password
-char password[] = "100rupaylagega";
+char password[] = "123"; // Your password = 123
 // your network key Index number (needed only for WEP)
 int keyIndex = 0;
 
