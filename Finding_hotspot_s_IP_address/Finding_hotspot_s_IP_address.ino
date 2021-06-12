@@ -1,8 +1,8 @@
 #include <SPI.h>
 #include <WiFi.h>
 
-char ssid[]="Galaxy M30sF825";        //Hotspot name(username)
-char password[]="howudoin";
+char ssid[]="XYZ";        //Hotspot name(username)
+char password[]="123";    // Your password
 
 IPAddress ip,gateway,subnet;         //Datatype (with "ip" as variable)
 
