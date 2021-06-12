@@ -1,14 +1,14 @@
 #include <SPI.h>
 #include <WiFi.h>
-char ssid[]= "DELL";
-char password[]= "54166713";
+char ssid[]= "XYZ"; // Client's device name
+char password[]= "123"; // Client's password
 
 int status=WL_IDLE_STATUS;
 char b[100];
 int k;
 
 uint16_t port =9999;     // port number of the server
-IPAddress server(192,168,1,122);   // IP Address of the server
+IPAddress server(xxx,xxx,x,xxx);   // IP Address of the server
 WiFiClient client;
 
 void setup()
