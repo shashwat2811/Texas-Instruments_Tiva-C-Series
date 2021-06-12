@@ -1,11 +1,11 @@
 #include <SPI.h>
 #include <WiFi.h>
 
-char ssid[]="Galaxy M30sF825";        
-char password[]="10rupaylagega";
+char ssid[]="XYZ"; //Your device name = XYZ       
+char password[]="123"; // Your password = 123
 
 uint16_t port = 9999;
-IPAddress server(192,168,122,43);
+IPAddress server(xxx,xx,xx,xx); //Your IP address = xxx,xx,xx,xx
 WiFiClient client;
 
 void setup()
